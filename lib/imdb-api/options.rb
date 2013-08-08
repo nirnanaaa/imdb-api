@@ -23,6 +23,11 @@ module ImdbApi
             locale: 'en_US', 
             timestamp:  Time.now.to_i
           },
+          title_params: {
+            "json"=> "1", 
+            nr: 1, 
+            tt: "on"
+          },
           faraday: {
             proxy: nil,
             adapter: Faraday.default_adapter
