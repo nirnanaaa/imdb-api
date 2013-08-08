@@ -29,4 +29,4 @@ end
 
 require 'imdb-api/imdb'
 require 'imdb-api/movie'
-require 'imdb-api/shows'
+require 'imdb-api/series'
