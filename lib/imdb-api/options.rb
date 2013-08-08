@@ -4,12 +4,15 @@ module ImdbApi
       
       # == Class variable
       attr_accessor :options
-      
+            
       def defaults
         {
           base_uri: 'https://app.imdb.com',
           anonymize_uri: 'http://anonymouse.org/cgi-bin/anon-www.cgi/',
-          anonymize: false
+          anonymize: false,
+          faraday: {
+            proxy: nil
+          }
         }
       end
       

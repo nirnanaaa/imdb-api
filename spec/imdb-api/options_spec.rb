@@ -13,7 +13,7 @@ describe ImdbApi::Options do
     expect(ImdbApi::Options.options).not_to be_nil
   end
   
-  [:base_uri, :anonymize_uri, :anonymize].each do |item|
+  [:base_uri, :anonymize_uri, :anonymize, :faraday].each do |item|
     it "responds to #{item}" do
       expect(ImdbApi::Options.options).to respond_to(item)
     end
