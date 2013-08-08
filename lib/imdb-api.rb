@@ -27,6 +27,9 @@ module ImdbApi
   # == Custom Error if a movie was not found
   class MovieNotFoundError < StandardError; end
   
+  # == Parsing Error
+  class InvalidDataError < StandardError; end
+  
 end
 
 require 'imdb-api/object'

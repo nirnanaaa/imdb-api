@@ -12,5 +12,30 @@ describe ImdbApi::Imdb do
     end
     
   end
+  describe "Getting" do
+    before :each do
+      ImdbApi::Options.set(anonymize: true)
+    end
+    describe "top 250" do
+      before :all do
+        @top = ImdbApi::Imdb.top250
+      end
+      
+      it "has 250 items" do
+        expect(@top).to have(250).items
+      end
+      
+      it "has 250 ImdbApi::Object s" do
+        @top.each{|item| expect(item).to be_a ImdbApi::Object}
+      end
+      
+      it "each item has a title" do
+        @top.each{|item| expect(item.title).to  be_a String}
+      end
+        
+      
+    end
+    
+  end
   
 end
