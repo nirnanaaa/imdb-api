@@ -15,7 +15,7 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   
   config.filter_run_excluding :slow unless ENV["SLOW_SPECS"]
-
+  config.before(:all){ ImdbApi::Options.set(anonymize: false) }
   config.before(:all) { DeferredGarbageCollection.start }
   config.after(:all) { DeferredGarbageCollection.reconsider }
 end
