@@ -11,7 +11,8 @@ module ImdbApi
           anonymize_uri: 'http://anonymouse.org/cgi-bin/anon-www.cgi/',
           anonymize: false,
           faraday: {
-            proxy: nil
+            proxy: nil,
+            adapter: Faraday.default_adapter
           }
         }
       end

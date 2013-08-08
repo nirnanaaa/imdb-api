@@ -3,6 +3,7 @@
 require 'json'
 require 'open-uri'
 require 'hashr'
+require 'faraday'
 
 # == IMDB Api module definition
 #
