@@ -3,6 +3,7 @@ require 'open-uri'
 
 module ImdbApi
   VERSION = '0.0.1'
+  class MovieNotFoundError < StandardError; end
 end
 
 require 'imdb-api/imdb'
