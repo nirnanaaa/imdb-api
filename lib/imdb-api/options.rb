@@ -14,6 +14,7 @@ module ImdbApi
         {
           base_uri: 'https://app.imdb.com',
           anonymize_uri: 'http://anonymouse.org/cgi-bin/anon-www.cgi/',
+          xml_find_uri: 'http://www.imdb.com/xml/find',
           anonymize: false,
           request_params: {
             api: "v1",

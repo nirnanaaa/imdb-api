@@ -18,9 +18,7 @@ require 'faraday'
 #
 #
 module ImdbApi
-  
-  BASE_URI = 'http://anonymouse.org/cgi-bin/anon-www.cgi/https://app.imdb.com'
-  
+
   # == IMDB Api version String
   VERSION = '0.0.1'
   

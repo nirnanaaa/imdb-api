@@ -11,7 +11,7 @@ module ImdbApi
         Options.set(options) unless Options.initialized?
         opts = Options.options
         query_param_array = []
-        base_uri = URI.parse(BASE_URI)
+        base_uri = URI.parse((opts.anonymize?) ?  opts.anonymize_uri+opts.base_uri : opts.base_uri)
         base_host = base_uri.host
         the_path = base_uri.path + path
         opts.request_params.merge(rparams).each_pair{|key, value| query_param_array << "#{key}=#{URI.escape(value.to_s)}" }

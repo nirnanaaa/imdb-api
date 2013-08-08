@@ -57,17 +57,13 @@ module ImdbApi
         Options.set(options) unless Options.initialized?
         opts = Options.options.title_params.merge(q: string)
         
-        result = Imdb.get("http://www.imdb.com/xml/find", query: opts)
+        result = Imdb.get(Options.options.anonymize? ?  Options.options.anonymize_uri + Options.options.xml_find_uri : Options.options.xml_find_uri , query: opts)
         ImdbApi::Object.new(JSON.parse(result))
         
       end 
       
       # == Aliasing
       alias_method :search, :search_all
-      
-    end
-    
-    def new(id)
       
     end
     
