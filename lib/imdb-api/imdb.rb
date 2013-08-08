@@ -21,12 +21,14 @@ module ImdbApi
         uri.to_s
       end
       
+      # == Gets an URL
       def get(url, options = {})
+        opts = Options.options
         Options.set(options) unless Options.initialized?
-        conn = Faraday.new(:url => (Options.options.anonymize?) ?  Options.options.anonymize_uri+Options.options.base_uri : Options.options.base_uri) do |faraday|
-          faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+        conn = Faraday.new(:url => (opts.anonymize?) ?  opts.anonymize_uri+opts.base_uri : opts.base_uri) do |faraday|
+          faraday.adapter  opts.faraday.adapter  # make requests with Net::HTTP
         end
-        conn.options.proxy = Options.options.faraday.proxy if Options.options.faraday.proxy?
+        conn.options.proxy = opts.faraday.proxy if opts.faraday.proxy?
         conn.get(url).body
       end
       
