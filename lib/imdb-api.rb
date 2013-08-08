@@ -17,7 +17,7 @@ require 'open-uri'
 #
 module ImdbApi
   
-  BASE_URI = 'anonymouse.org/cgi-bin/anon-www.cgi/https://app.imdb.com'
+  BASE_URI = 'http://anonymouse.org/cgi-bin/anon-www.cgi/https://app.imdb.com'
   
   # == IMDB Api version String
   VERSION = '0.0.1'
@@ -27,6 +27,7 @@ module ImdbApi
   
 end
 
+require 'imdb-api/object'
 require 'imdb-api/imdb'
 require 'imdb-api/movie'
 require 'imdb-api/series'

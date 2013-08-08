@@ -7,8 +7,8 @@ module ImdbApi
       # == URL builder
       # 
       # Performs the transition from /some/path into http(s)://some.url/some/path
-      def build_url(path)
-        default_params = {"api" => "v1", "appid" => "iphone1_1", "apiPolicy" => "app1_1", "apiKey" => "2wex6aeu6a8q9e49k7sfvufd6rhh0n", "locale" => "en_US", "timestamp" => Time.now.to_i}
+      def build_url(path, settings = {})
+        default_params = {"api" => "v1", "appid" => "iphone1_1", "apiPolicy" => "app1_1", "apiKey" => "2wex6aeu6a8q9e49k7sfvufd6rhh0n", "locale" => "de_DE", "timestamp" => Time.now.to_i}
         query_param_array = []
         base_uri = URI.parse(BASE_URI)
         base_host = base_uri.host
