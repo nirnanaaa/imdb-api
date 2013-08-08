@@ -2,6 +2,7 @@
 # Externals
 require 'json'
 require 'open-uri'
+require 'hashr'
 
 # == IMDB Api module definition
 #
@@ -28,6 +29,7 @@ module ImdbApi
 end
 
 require 'imdb-api/object'
+require 'imdb-api/options'
 require 'imdb-api/imdb'
 require 'imdb-api/movie'
 require 'imdb-api/series'
