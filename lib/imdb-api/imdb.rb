@@ -22,11 +22,14 @@ module ImdbApi
       end
       
       # == Gets an URL
+      #
+      # url - URL, builded with self.build_url
+      # options - Optional options hash
       def get(url, options = {})
         opts = Options.options
         Options.set(options) unless Options.initialized?
         conn = Faraday.new(:url => (opts.anonymize?) ?  opts.anonymize_uri+opts.base_uri : opts.base_uri) do |faraday|
-          faraday.adapter  opts.faraday.adapter  # make requests with Net::HTTP
+          faraday.adapter  opts.faraday.adapter
         end
         conn.options.proxy = opts.faraday.proxy if opts.faraday.proxy?
         conn.get(url).body
@@ -36,9 +39,14 @@ module ImdbApi
       # JSON pre:
       # {:exp=>expires, :@meta=>{:serverTimeMs=>23, :requestId=>"id"}, :data=>{:list=>{:label=>"Top 250 movies as voted by our users", :list=> []
       #
-      def top250
-        url = self.build_url('/chart/top')
-        ImdbApi::Object.deserialize(self.get(url))
+      def top250_movies
+        url = build_url('/chart/top')
+        ImdbApi::Object.deserialize(get(url))
+      end
+      
+      def top_shows
+        url = build_url('/chart/tv')
+        ImdbApi::Object.deserialize(get(url))
       end
       
     end
