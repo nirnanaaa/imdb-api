@@ -55,7 +55,7 @@ module ImdbApi
         Options.set(options) unless Options.initialized?
         opts = Options.options.title_params.merge(q: string)
         
-        result = Imdb.get(Options.options.anonymize? ?  Options.options.anonymize_uri + Options.options.xml_find_uri : Options.options.xml_find_uri , query: opts)
+        result = Imdb.get(Options.options.anonymize? ?  Options.options.anonymize_uri + Options.options.xml_find_uri : Options.options.xml_find_uri , query: opts)# does not work. Wrong content type
         Object.new(JSON.parse(result))
         
       end 

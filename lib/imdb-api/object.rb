@@ -1,7 +1,32 @@
 module ImdbApi
   class Object < ::Hashr
     
+    # == Validates given String for valid json
+    #
+    # string - String
+    #
+    # TODO: find faster implementation
+    #
+    # Returns Boolean true-false
+    def self.valid_json?(string)
+      JSON.parse(string)
+      return true
+    rescue JSON::ParserError
+      return false
+    end
+    
+    # == Checks if given JSON string is empty
+    #
+    # string - A String
+    #
+    #
+    # Returns Boolean true-false
+    def self.empty_json?(string)
+      string.nil? || JSON.parse(string).empty?
+    end
+    
     def self.deserialize(string)
+      
       json = JSON.parse(string)
       
       
