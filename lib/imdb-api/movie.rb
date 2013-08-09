@@ -27,7 +27,7 @@ module ImdbApi
         end
       end    
       
-      # == Resolvs a Movie after the search
+      # == Resolvs a Movie after the search or by ImdbApi::Object
       #
       # can be used after: search, search_all, search_exact, search_popular.
       #
@@ -41,9 +41,7 @@ module ImdbApi
         url = Imdb.build_url('/title/maindetails', :tconst => movie.id)
         result = JSON.parse(Imdb.get(url))
         if result.is_a?(Array)
-          return result.map do |movie|
-            Object.new(movie)
-          end            
+          return result.map{|movie| Object.new(movie)}     
         else
           return Object.new(result)
         end
@@ -58,7 +56,7 @@ module ImdbApi
         opts = Options.options.title_params.merge(q: string)
         
         result = Imdb.get(Options.options.anonymize? ?  Options.options.anonymize_uri + Options.options.xml_find_uri : Options.options.xml_find_uri , query: opts)
-        ImdbApi::Object.new(JSON.parse(result))
+        Object.new(JSON.parse(result))
         
       end 
       
