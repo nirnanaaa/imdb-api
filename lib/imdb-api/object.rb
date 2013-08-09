@@ -5,7 +5,7 @@ module ImdbApi
       json = JSON.parse(string)
       
       
-      raise InvalidDataError, "Invalid Hash returned. Expected [\"data\"]" unless json.has_key?("data")
+      raise InvalidDataError, "Invalid input Hash. Expected hash key [\"data\"]" unless json.has_key?("data")
       
       # Array
       if json["data"].has_key?("list")
@@ -24,6 +24,7 @@ module ImdbApi
     
     def initialize(hash = {})
       super(hash)
+      self.instance_eval{ attr_accessor :actors, :principals} if self.principals?
     end
   end
 end
